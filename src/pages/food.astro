@@ -1,0 +1,67 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`食品 | ${SITE_TITLE}`} description="補給食・食品の紹介（準備中）" />
+		<style>
+			.construction-container {
+				background: #fff;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+				padding: 4rem 2rem;
+				text-align: center;
+			}
+			.construction-icon {
+				font-size: 4rem;
+				margin-bottom: 1rem;
+			}
+			h1 {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+				color: rgb(var(--black));
+			}
+			p {
+				color: rgb(var(--gray-dark));
+				margin-bottom: 2rem;
+			}
+			.back-link {
+				display: inline-block;
+				background-color: var(--accent);
+				color: white;
+				padding: 0.8rem 1.5rem;
+				border-radius: 8px;
+				text-decoration: none;
+				font-weight: bold;
+				transition: background-color 0.2s;
+			}
+			.back-link:hover {
+				background-color: var(--accent-dark);
+                color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="layout-wrapper">
+				<div>
+					<div class="construction-container">
+						<div class="construction-icon">🍙</div>
+						<h1>食品 - 準備中</h1>
+						<p>こちらのページは現在コンテンツを準備しております。<br>公開までもうしばらくお待ちください！</p>
+						<a href="/" class="back-link">トップページへ戻る</a>
+					</div>
+				</div>
+				<Sidebar />
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
