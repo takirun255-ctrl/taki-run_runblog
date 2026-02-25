@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import ProfileImage from '../assets/blog_profile.png';
 ---
 
 <aside class="sidebar">
 	<div class="profile-card">
 		<h3>Profile</h3>
-		<img src="/blog-placeholder-about.jpg" alt="Profile avatar" class="avatar" />
+		<Image src={ProfileImage} alt="Profile avatar" class="avatar" width={120} height={120} />
 		<h4>taki-run</h4>
 		<p>学生時代から走ることが好きでランニングを続けています。雪国市民ランナー PB 5000m 16:50(2021年04月),10km 34:52(2025年11月),ハーフ 1:14:47(2025年12月),フル 2:39:31(2026年2月)</p>
 		<div class="sns-links">
