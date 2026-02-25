@@ -57,10 +57,74 @@ const posts = (await getCollection('blog')).sort(
 			.mt-4 {
 				margin-top: 3rem;
 			}
-			.article-list {
-				list-style-type: none;
-				margin: 0;
+			.items-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 2rem;
+				list-style: none;
 				padding: 0;
+			}
+			.item-card {
+				background: #fff;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+			}
+			.item-image {
+				width: 100%;
+				height: 200px;
+				object-fit: cover;
+				background: #f0f0f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3rem;
+				text-decoration: none;
+			}
+			.item-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			.item-content {
+				padding: 1.5rem;
+				flex-grow: 1;
+			}
+			.item-category {
+				font-size: 0.8rem;
+				color: var(--accent);
+				font-weight: bold;
+				text-transform: uppercase;
+                margin-bottom: 0.5rem;
+			}
+			.item-title {
+				margin: 0 0 1rem 0;
+				font-size: 1.2rem;
+				color: rgb(var(--black));
+			}
+			.item-title a {
+				color: inherit;
+				text-decoration: none;
+			}
+			.item-title a:hover {
+				color: var(--accent);
+			}
+			.item-description {
+				font-size: 0.95rem;
+				color: rgb(var(--gray-dark));
+				margin: 0;
+			}
+			.item-meta {
+				font-size: 0.8rem;
+				color: rgb(var(--gray));
+				margin-top: 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				border-top: 1px solid rgb(var(--gray-light));
+				padding-top: 0.8rem;
 			}
 		</style>
 	</head>
@@ -71,17 +135,18 @@ const posts = (await getCollection('blog')).sort(
 				<div class="main-content">
 					<section class="home-section">
 						<h2>✨ 新着情報</h2>
-						<ul class="article-list">
+						<ul class="items-grid">
 							{
 								posts.slice(0, 3).map((post) => (
-									<li>
-										<a href={`/blog/${post.id}/`}>
-											<h4 class="title">{post.data.title}</h4>
-											<p class="date">
-												<FormattedDate date={post.data.pubDate} />
-											</p>
-											<p>{post.data.description}</p>
+									<li class="item-card">
+										<a href={`/blog/${post.id}/`} class="item-image">
+											{post.data.heroImage ? <img src={post.data.heroImage} alt="" /> : '📝'}
 										</a>
+										<div class="item-content">
+											<div class="item-category"><FormattedDate date={post.data.pubDate} /></div>
+											<h3 class="item-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+											<p class="item-description">{post.data.description}</p>
+										</div>
 									</li>
 								))
 							}
@@ -90,13 +155,18 @@ const posts = (await getCollection('blog')).sort(
 
 					<section class="home-section mt-4">
 						<h2>⭐ 高評価アイテム</h2>
-						<ul class="article-list">
-							<li>
-								<a href="/items#shoes">
-									<h4 class="title">dummy</h4>
-									<p class="date">シューズ部門</p>
-									<p>クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。</p>
-								</a>
+						<ul class="items-grid">
+							<li class="item-card">
+								<a href="/items#shoes" class="item-image">👟</a>
+								<div class="item-content">
+									<div class="item-category">シューズ部門</div>
+									<h3 class="item-title"><a href="/items#shoes">dummy</a></h3>
+									<p class="item-description">クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。</p>
+									<div class="item-meta">
+										<span>📅 更新日: 2025/02/25</span>
+										<span>⭐ 評価: 80/100</span>
+									</div>
+								</div>
 							</li>
 						</ul>
 					</section>
