@@ -1,9 +1,14 @@
 ---
+import { SITE_TITLE } from '../consts';
 const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
+	<div class="legal-links">
+		<a href="/privacy">プライバシーポリシー</a> | 
+		<a href="/disclaimer">免責事項</a>
+	</div>
+	&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.
 
 </footer>
 <style>

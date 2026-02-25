@@ -9,15 +9,21 @@ import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 		<img src="/blog-placeholder-about.jpg" alt="Profile avatar" class="avatar" />
 		<h4>taki-run</h4>
 		<p>40代サラリーマン。休日のリフレッシュとしてランニングを楽しんでいます。目標はハーフマラソン2時間切り！</p>
+		<div class="sns-links">
+			<a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">𝕏 (Twitter)</a>
+			<a href="https://note.com/" target="_blank" rel="noopener noreferrer">note</a>
+		</div>
 		<a href="/about" class="read-more">>> 詳しいプロフィール</a>
 	</div>
 
 	<div class="sidebar-section">
 		<h3>Categories</h3>
 		<ul>
-			<li><a href="/blog">ランニング記録</a></li>
-			<li><a href="/items">ランニングアイテム</a></li>
-			<li><a href="/blog">トレーニングメニュー</a></li>
+			<li><a href="/items#shoes">シューズ</a></li>
+			<li><a href="/items#wear">ウェア</a></li>
+			<li><a href="/items#gear">ギア</a></li>
+			<li><a href="/items#food">食品</a></li>
+			<li><a href="/items#other">その他</a></li>
 		</ul>
 	</div>
 
@@ -109,4 +115,22 @@ import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
         font-size: 0.9em;
         color: rgb(var(--gray-dark));
     }
+
+	.sns-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-bottom: 1em;
+	}
+
+	.sns-links a {
+		font-size: 0.9em;
+		color: var(--accent);
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	.sns-links a:hover {
+		text-decoration: underline;
+	}
 </style>
