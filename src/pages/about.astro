@@ -9,6 +9,12 @@ import Layout from '../layouts/BlogPost.astro';
 	pubDate={new Date('February 25 2026')}
 	heroImage={AboutHeroImage}
 >
+	<style is:global>
+		.hero-image img {
+			width: 25%;
+		}
+	</style>
+
 	<p>
 		本ブログをご参照いただきありがとうございます。
 	</p>
