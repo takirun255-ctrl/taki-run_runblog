@@ -1,0 +1,65 @@
+---
+interface Props {
+	src?: string;
+	alt?: string;
+	title?: string;
+    href?: string;
+}
+
+const { src, alt = "広告", title = "広告リンク", href = "#" } = Astro.props;
+---
+
+<div class="affiliate-banner">
+    <span class="ad-label">スポンサーリンク</span>
+    <a href={href} target="_blank" rel="noopener noreferrer">
+        {src ? (
+            <img src={src} alt={alt} title={title} loading="lazy" />
+        ) : (
+            <div class="placeholder-ad">
+                <p>A8.net / Amazon 広告枠 (300x250等)</p>
+            </div>
+        )}
+    </a>
+</div>
+
+<style>
+	.affiliate-banner {
+		margin: 2rem 0;
+		text-align: center;
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+	}
+    .ad-label {
+        display: block;
+        font-size: 0.75rem;
+        color: rgb(var(--gray));
+        margin-bottom: 0.5rem;
+    }
+    .affiliate-banner a {
+        display: inline-block;
+    }
+    .affiliate-banner img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+    .placeholder-ad {
+        width: 300px;
+        height: 250px;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(var(--gray-dark));
+        font-weight: bold;
+        border: 2px dashed #ced4da;
+        margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+        .placeholder-ad {
+            width: 100%;
+            height: 200px;
+        }
+    }
+</style>
