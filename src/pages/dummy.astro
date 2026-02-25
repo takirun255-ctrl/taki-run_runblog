@@ -1,0 +1,251 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`dummy review | ${SITE_TITLE}`} description="ダミーシューズのレビュー記事です。" />
+		<style>
+			.article-content {
+				background: #fff;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+				padding: 3rem 2.5rem;
+			}
+			.article-header {
+				margin-bottom: 2rem;
+				border-bottom: 1px solid rgb(var(--gray-light));
+				padding-bottom: 2rem;
+			}
+			.category-tag {
+				display: inline-block;
+				background-color: rgb(var(--gray-light));
+				color: var(--accent);
+				font-weight: bold;
+				padding: 0.3rem 1rem;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				margin-bottom: 1rem;
+				text-decoration: none;
+			}
+			.article-title {
+				font-size: 2.2rem;
+				color: rgb(var(--black));
+				margin: 0 0 1rem 0;
+				line-height: 1.4;
+			}
+			.article-meta {
+				display: flex;
+				gap: 1.5rem;
+				color: rgb(var(--gray));
+				font-size: 0.9rem;
+			}
+			
+			/* Hero Image Placeholder */
+			.hero-image {
+				width: 100%;
+				height: 400px;
+				background: #f8f9fa;
+				border-radius: 8px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 5rem;
+				margin-bottom: 3rem;
+			}
+
+			/* Tech Blog Style Typography inside Article */
+			.article-body h2 {
+				font-size: 1.6rem;
+				color: rgb(var(--black));
+				margin: 3rem 0 1.5rem 0;
+				padding-bottom: 0.5rem;
+				border-bottom: 2px solid var(--accent);
+			}
+			.article-body h3 {
+				font-size: 1.3rem;
+				color: rgb(var(--black));
+				margin: 2rem 0 1rem 0;
+				padding-left: 0.8rem;
+				border-left: 4px solid var(--accent);
+			}
+			.article-body p {
+				color: rgb(var(--gray-dark));
+				line-height: 1.8;
+				margin-bottom: 1.5rem;
+				font-size: 1.05rem;
+			}
+
+			/* Spec Table (Tech Blog Style) */
+			.spec-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 2rem 0;
+				background: #fff;
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+			}
+			.spec-table th, .spec-table td {
+				padding: 1rem;
+				border: 1px solid #e9ecef;
+				text-align: left;
+			}
+			.spec-table th {
+				background: #f8f9fa;
+				color: rgb(var(--black));
+				font-weight: bold;
+				width: 30%;
+			}
+
+			/* Pros / Cons Design */
+			.review-box {
+				display: flex;
+				gap: 2rem;
+				margin: 2rem 0;
+			}
+			.pros-cons {
+				flex: 1;
+				padding: 1.5rem;
+				border-radius: 8px;
+			}
+			.pros {
+				background: #e8f5e9;
+				border: 1px solid #c8e6c9;
+			}
+			.cons {
+				background: #ffebee;
+				border: 1px solid #ffcdd2;
+			}
+			.pros-cons h4 {
+				margin-top: 0;
+				font-size: 1.1rem;
+			}
+			.pros h4 { color: #2e7d32; }
+			.cons h4 { color: #c62828; }
+			.pros-cons ul {
+				margin: 0;
+				padding-left: 1.5rem;
+				color: rgb(var(--gray-dark));
+			}
+			.pros-cons li {
+				margin-bottom: 0.5rem;
+			}
+
+            @media (max-width: 768px) {
+                .review-box {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+            }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="layout-wrapper">
+				<div class="main-content">
+					<article class="article-content">
+						<header class="article-header">
+							<a href="/shoes" class="category-tag">シューズ</a>
+							<h1 class="article-title">【徹底レビュー】dummy： クッション性能と反発力が進化したデイリートレーナーの決定版</h1>
+							<div class="article-meta">
+								<span>📅 公開日: 2025/02/25</span>
+								<span>🔄 更新日: 2025/02/26</span>
+								<span>⭐ 評価: 85/100</span>
+							</div>
+						</header>
+
+						<div class="hero-image">
+							👟
+						</div>
+
+						<div class="article-body">
+							<p>
+								こんにちは、taki-runです。<br>
+								今回は先日新たに購入したランニングシューズ、<strong>「dummy」</strong> を100kmほど履き込んだので、良い点・悪い点を含めてフラットな目線でレビューしていきたいと思います。
+							</p>
+
+							<h2>1. 基本スペック</h2>
+							<p>
+								まずはこのシューズの基本情報から整理します。前作と比較してミッドソールの設計が大きく見直され、より汎用性の高いモデルへと進化しています。
+							</p>
+							
+							<table class="spec-table">
+								<tbody>
+									<tr>
+										<th>ブランド</th>
+										<td>Dummy Brand</td>
+									</tr>
+									<tr>
+										<th>重量</th>
+										<td>255g (27.0cm 片足)</td>
+									</tr>
+									<tr>
+										<th>ドロップ</th>
+										<td>8mm (ヒール: 36mm / フォア: 28mm)</td>
+									</tr>
+									<tr>
+										<th>ミッドソール材</th>
+										<td>Dummy Foam+</td>
+									</tr>
+									<tr>
+										<th>用途</th>
+										<td>デイリージョグ、LSD、テンポラン</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<h2>2. 率直なレビュー：良かった点と気になる点</h2>
+							<p>
+								実際にロング・ショートの様々な環境で走ってみた結果、以下の特徴が見えてきました。
+							</p>
+
+							<div class="review-box">
+								<div class="pros-cons pros">
+									<h4>👍 良かった点 (Pros)</h4>
+									<ul>
+										<li>沈み込みすぎない絶妙なクッションの硬さ</li>
+										<li>アッパーの通気性が良く、夏場でも蒸れにくい</li>
+										<li>アウトソールの耐久性が高い（100km走行でも削れほぼなし）</li>
+									</ul>
+								</div>
+								<div class="pros-cons cons">
+									<h4>🤔 気になる点 (Cons)</h4>
+									<ul>
+										<li>シュータンが少し短く、結び目と干渉しやすい</li>
+										<li>キロ4分台前半以上まで上げると、少しもたつく感覚あり</li>
+									</ul>
+								</div>
+							</div>
+
+							<h2>3. 走行感（ジョグ〜ペース走）</h2>
+							<h3>デイリージョグ（5:30〜6:00/km）</h3>
+							<p>
+								このシューズのスイートスポットは間違いなくこのペース帯です。「Dummy Foam+」が足への衝撃をしっかりと吸収してくれ、翌日の疲労感がかなり軽減されます。
+							</p>
+
+							<h3>テンポラン（4:30〜5:00/km）</h3>
+							<p>
+								反発力もある程度備えていますが、レーシングシューズのような爆発力はありません。あくまで自力でペースを作る感覚ですが、安定感があるので気持ちよくスピードに乗ることができます。
+							</p>
+
+							<h2>4. 総評・まとめ</h2>
+							<p>
+								<strong>dummy</strong> は、「これからランニングを本格的に始めたい人」から「サブ3.5〜4を目指すランナーの練習用ジョグシューズ」として非常に優秀な一足です。<br>
+								少し気になる点はありますが、耐久性とクッション性を考えれば、間違いなくコストパフォーマンスに優れたシューズと言えるでしょう。
+							</p>
+						</div>
+					</article>
+				</div>
+				<Sidebar />
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

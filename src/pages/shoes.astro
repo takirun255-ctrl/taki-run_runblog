@@ -1,0 +1,165 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`シューズ一覧 | ${SITE_TITLE}`} description="ランニングシューズのレビュー一覧ページです。" />
+		<style>
+			.items-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2rem;
+				list-style: none;
+				padding: 0;
+			}
+			@media (max-width: 768px) {
+				.items-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+			.item-card {
+				background: #fff;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.item-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+			}
+			.item-image {
+				width: 100%;
+				height: 200px;
+				object-fit: cover;
+				background: #f0f0f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3rem;
+				text-decoration: none;
+			}
+			.item-content {
+				padding: 1.5rem;
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+			}
+			.item-category {
+				font-size: 0.8rem;
+				color: var(--accent);
+				font-weight: bold;
+				text-transform: uppercase;
+                margin-bottom: 0.5rem;
+			}
+			.item-category a {
+				color: inherit;
+				text-decoration: none;
+			}
+			.item-title {
+				margin: 0 0 1rem 0;
+				font-size: 1.2rem;
+				color: rgb(var(--black));
+			}
+			.item-title a {
+				color: inherit;
+				text-decoration: none;
+			}
+			.item-title a:hover {
+				color: var(--accent);
+			}
+			.item-description {
+				font-size: 0.95rem;
+				color: rgb(var(--gray-dark));
+				margin: 0;
+				line-height: 1.5;
+				flex-grow: 1;
+			}
+			.item-meta {
+				font-size: 0.8rem;
+				color: rgb(var(--gray));
+				margin-top: 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				border-top: 1px solid rgb(var(--gray-light));
+				padding-top: 0.8rem;
+			}
+            .pagination {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-top: 3rem;
+                list-style: none;
+                padding: 0;
+            }
+            .pagination li a, .pagination li span {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                background: #fff;
+                color: rgb(var(--black));
+                text-decoration: none;
+                font-weight: bold;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                transition: background-color 0.2s, color 0.2s;
+            }
+            .pagination li a:hover {
+                background: rgb(var(--gray-light));
+            }
+            .pagination li.active span {
+                background: var(--accent);
+                color: #fff;
+            }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="layout-wrapper">
+				<div class="main-content">
+					<div class="page-header">
+						<h1 style="border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1rem;">👟 シューズ レビュー一覧</h1>
+						<p style="color: rgb(var(--gray-dark)); margin-bottom: 2rem;">これまで履いてきたランニングシューズの率直なレビューです。</p>
+					</div>
+
+					<ul class="items-grid">
+						{Array.from({ length: 10 }).map((_, i) => (
+							<li class="item-card">
+								<a href="/dummy" class="item-image">👟</a>
+								<div class="item-content">
+									<div class="item-category"><a href="/shoes">シューズ</a></div>
+									<h3 class="item-title"><a href="/dummy">dummy shoes {i + 1}</a></h3>
+									<p class="item-description">クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。ソール設計などについて詳細にレビューしています。</p>
+									<div class="item-meta">
+										<span>📅 更新日: 2025/02/25</span>
+										<span>⭐ 評価: {90 - i}/100</span>
+									</div>
+								</div>
+							</li>
+						))}
+					</ul>
+
+                    <!-- Pagination -->
+                    <ul class="pagination">
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><span>...</span></li>
+                        <li><a href="#">次へ &raquo;</a></li>
+                    </ul>
+				</div>
+				<Sidebar />
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
