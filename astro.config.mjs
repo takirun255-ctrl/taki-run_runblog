@@ -4,8 +4,11 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://taki-run-runblog.pages.dev',
-	integrations: [mdx(), sitemap()],
+  site: 'https://taki-run-runblog.pages.dev',
+  integrations: [mdx(), sitemap()],
+  adapter: cloudflare(),
 });
