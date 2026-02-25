@@ -47,17 +47,33 @@ const posts = (await getCollection('blog')).sort(
 			ul li a:hover .date {
 				color: var(--accent);
 			}
+			.home-section h2 {
+				border-bottom: 2px solid rgb(var(--accent));
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+				font-size: 1.8rem;
+				color: rgb(var(--black));
+			}
+			.mt-4 {
+				margin-top: 3rem;
+			}
+			.article-list {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
 			<div class="layout-wrapper">
-				<div>
-					<section>
-						<ul>
+				<div class="main-content">
+					<section class="home-section">
+						<h2>✨ 新着情報</h2>
+						<ul class="article-list">
 							{
-								posts.map((post) => (
+								posts.slice(0, 3).map((post) => (
 									<li>
 										<a href={`/blog/${post.id}/`}>
 											<h4 class="title">{post.data.title}</h4>
@@ -69,6 +85,19 @@ const posts = (await getCollection('blog')).sort(
 									</li>
 								))
 							}
+						</ul>
+					</section>
+
+					<section class="home-section mt-4">
+						<h2>⭐ 高評価アイテム</h2>
+						<ul class="article-list">
+							<li>
+								<a href="/items#shoes">
+									<h4 class="title">dummy</h4>
+									<p class="date">シューズ部門</p>
+									<p>クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。</p>
+								</a>
+							</li>
 						</ul>
 					</section>
 				</div>
