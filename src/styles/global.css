@@ -44,10 +44,23 @@ body {
 	line-height: 1.7;
 }
 main {
-	width: 720px;
+	width: 1020px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
+}
+
+.layout-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 300px;
+	gap: 2em;
+	align-items: start;
+}
+
+@media (max-width: 768px) {
+	.layout-wrapper {
+		grid-template-columns: 1fr;
+	}
 }
 h1,
 h2,

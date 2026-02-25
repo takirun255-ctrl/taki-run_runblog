@@ -2,35 +2,78 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				width: 100%;
+				margin-bottom: 2rem;
+				border-bottom: 1px solid rgb(var(--gray-light));
+				padding-bottom: 1rem;
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+				font-size: 1.5rem;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+				font-size: 0.9rem;
+			}
+			ul li a:hover h4,
+			ul li a:hover .date {
+				color: var(--accent);
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🏃‍♂️ Welcome to My Running Log</h1>
-			<p>
-				こんにちは。こちらは日々のランニング記録とテック系の知見をまとめる個人の技術ブログです。
-				Astroを利用した静的サイトジェネレーターの構成で構築されており、シンプルかつ高速なページ遷移を実現しています。
-			</p>
-			<p>
-				本ブログでは以下のようなトピックを扱っていく予定です：
-			</p>
-			<ul>
-				<li>日々のランニングのタイムとコース記録</li>
-				<li>マラソン大会へ向けたトレーニングメニュー</li>
-				<li>フロントエンド技術（Astro、React等）の開発Tips</li>
-				<li>Cloudflareを用いた高速なエッジデプロイメント</li>
-			</ul>
-			<p>
-				継続率を高めるために、まずは毎週末のランニング後に更新することを目指します。<br />
-				マークダウンファイルを追加するだけで自動デプロイされる仕組みを導入済みです。
-			</p>
+			<div class="layout-wrapper">
+				<div>
+					<section>
+						<ul>
+							{
+								posts.map((post) => (
+									<li>
+										<a href={`/blog/${post.id}/`}>
+											<h4 class="title">{post.data.title}</h4>
+											<p class="date">
+												<FormattedDate date={post.data.pubDate} />
+											</p>
+											<p>{post.data.description}</p>
+										</a>
+									</li>
+								))
+							}
+						</ul>
+					</section>
+				</div>
+				<Sidebar />
+			</div>
 		</main>
 		<Footer />
 	</body>

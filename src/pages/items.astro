@@ -1,0 +1,113 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`おすすめランニングアイテム | ${SITE_TITLE}`} description="愛用しているランニングシューズやウェア、ガジェットの紹介です。" />
+		<style>
+			.items-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 2rem;
+				list-style: none;
+				padding: 0;
+			}
+			.item-card {
+				background: #fff;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+			}
+			.item-image {
+				width: 100%;
+				height: 200px;
+				object-fit: cover;
+				background: #f0f0f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 3rem;
+			}
+			.item-content {
+				padding: 1.5rem;
+				flex-grow: 1;
+			}
+			.item-category {
+				font-size: 0.8rem;
+				color: var(--accent);
+				font-weight: bold;
+				text-transform: uppercase;
+                margin-bottom: 0.5rem;
+			}
+			.item-title {
+				margin: 0 0 1rem 0;
+				font-size: 1.2rem;
+				color: rgb(var(--black));
+			}
+			.item-description {
+				font-size: 0.95rem;
+				color: rgb(var(--gray-dark));
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="layout-wrapper">
+				<div>
+					<h1>🏃‍♂️ ランニングアイテム</h1>
+					<p>初心者ランナーの私が実際に使ってみて良かった、おすすめのシューズやガジェット達です。</p>
+					
+					<div class="items-grid">
+						<!-- Item 1 -->
+						<div class="item-card">
+							<div class="item-image">👟</div>
+							<div class="item-content">
+								<div class="item-category">シューズ</div>
+								<h3 class="item-title">ナイキ ボメロプラス</h3>
+								<p class="item-description">
+									クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。
+								</p>
+							</div>
+						</div>
+						
+						<!-- Item 2 -->
+						<div class="item-card">
+							<div class="item-image">👟</div>
+							<div class="item-content">
+								<div class="item-category">シューズ</div>
+								<h3 class="item-title">アシックス ノヴァブラスト5</h3>
+								<p class="item-description">
+									反発力があり、スピードを出したい時のポイント練習で使用しています。
+								</p>
+							</div>
+						</div>
+						
+						<!-- Item 3 -->
+						<div class="item-card">
+							<div class="item-image">⌚</div>
+							<div class="item-content">
+								<div class="item-category">スマートウォッチ</div>
+								<h3 class="item-title">Garmin Forerunner 265</h3>
+								<p class="item-description">
+									心拍数やペースの管理に必須のアイテム。有機ELディスプレイが見やすくて便利です。
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<Sidebar />
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
