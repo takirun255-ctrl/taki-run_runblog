@@ -9,7 +9,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`シューズ一覧 | ${SITE_TITLE}`} description="ランニングシューズのレビュー一覧ページです。" />
+		<BaseHead title={`シューズ一覧 (2ページ目) | ${SITE_TITLE}`} description="ランニングシューズのレビュー一覧ページです。" />
 		<style>
 			.items-grid {
 				display: grid;
@@ -137,11 +137,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 								<a href="/dummy" class="item-image">👟</a>
 								<div class="item-content">
 									<div class="item-category"><a href="/shoes">シューズ</a></div>
-									<h3 class="item-title"><a href="/dummy">dummy shoes {i + 1}</a></h3>
+									<h3 class="item-title"><a href="/dummy">dummy shoes {i + 11}</a></h3>
 									<p class="item-description">クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。ソール設計などについて詳細にレビューしています。</p>
 									<div class="item-meta">
-										<span>📅 更新日: 2025/02/25</span>
-										<span>⭐ 評価: {90 - i}/100</span>
+										<span>📅 更新日: 2024/11/15</span>
+										<span>⭐ 評価: {80 - i}/100</span>
 									</div>
 								</div>
 							</li>
@@ -150,11 +150,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
                     <!-- Pagination -->
                     <ul class="pagination">
-                        <li class="active"><span>1</span></li>
-                        <li><a href="/shoes2">2</a></li>
+                        <li><a href="/shoes">&laquo; 前へ</a></li>
+                        <li><a href="/shoes">1</a></li>
+                        <li class="active"><span>2</span></li>
                         <li><a href="#">3</a></li>
                         <li><span>...</span></li>
-                        <li><a href="/shoes2">次へ &raquo;</a></li>
+                        <li><a href="#">次へ &raquo;</a></li>
                     </ul>
 				</div>
 				<Sidebar />
