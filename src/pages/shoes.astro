@@ -134,14 +134,14 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 					<ul class="items-grid">
 						{Array.from({ length: 10 }).map((_, i) => (
 							<li class="item-card">
-								<a href="/dummy" class="item-image">👟</a>
+								<a href={i === 0 ? "/dummy" : "#"} class="item-image">👟</a>
 								<div class="item-content">
 									<div class="item-category"><a href="/shoes">シューズ</a></div>
-									<h3 class="item-title"><a href="/dummy">dummy shoes {i + 1}</a></h3>
-									<p class="item-description">クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。ソール設計などについて詳細にレビューしています。</p>
+									<h3 class="item-title"><a href={i === 0 ? "/dummy" : "#"}>{i === 0 ? "ハイパーワープ プロ" : `dummy shoes ${i + 1}`}</a></h3>
+									<p class="item-description">{i === 0 ? "クッション性が高く、長距離のジョギングでも足への負担が少ないお気に入りの一足です。ソール設計などについて詳細にレビューしています。" : "準備中"}</p>
 									<div class="item-meta">
-										<span>📅 更新日: 2025/02/25</span>
-										<span>⭐ 評価: {90 - i}/100</span>
+										<span>📅 更新日: {i === 0 ? "2025/02/25" : "-"}</span>
+										<span>⭐ 評価: {i === 0 ? "90/100" : "-/100"}</span>
 									</div>
 								</div>
 							</li>
